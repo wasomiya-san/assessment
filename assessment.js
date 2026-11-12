@@ -18,25 +18,25 @@ assessmentButton.addEventListener(
     
     // headerDivision の作成
     const headerDivision = document.createElement('div');
-    headerDivision.setAttribute('class','card-header text-bg-primary');
-    headerDivision.innerText ='診断結果';
+    headerDivision.setAttribute('class', 'card-header text-bg-primary');
+    headerDivision.innerText = '診断結果';
 
     // bodyDivision の作成
     const bodyDivision = document.createElement('div');
-    bodyDivision.setAttribute('class','card-body');
+    bodyDivision.setAttribute('class', 'card-body');
 
-    const paragraph = document.createElement('div');
-    bodyDivision.setAttribute('class','card-text');
-    const result =assessment(userName);
+    const paragraph = document.createElement('p');
+    paragraph.setAttribute('class', 'card-text');
+    const result = assessment(userName);
     paragraph.innerText = result;
     bodyDivision.appendChild(paragraph);
 
     // resultDivision に Bootstrap のスタイルを適用する
-    resultDivision.setAttribute('class' , 'card');
+    resultDivision.setAttribute('class', 'card');
 
-    // headerDivision と bodyDividion を resultDIvision に差し込む
-  resultDivision.appendChild(headerDivision);
-  resultDivision.appendChild(bodyDivision);
+    // headerDivision と bodyDivision を resultDivision に差し込む
+    resultDivision.appendChild(headerDivision);
+    resultDivision.appendChild(bodyDivision);
 
     // ツイートエリアの作成
     tweetDivision.innerText = '';
@@ -59,26 +59,14 @@ assessmentButton.addEventListener(
   }
 );
 
-// TODO Enter キーで診断する処理を追加
-let enterCount = 0;
-
 userNameInput.addEventListener(
   'keydown',
   (event) => {
-     //Enterキーが押されたら、Enterキーが押されるたびに、回数が1回増える
     if (event.key === 'Enter') {
-      enterCount++;
-
-      //2回押されたら診断する
-      if(enterCount === 2){
       assessmentButton.dispatchEvent(new Event('click'))
-      //回数をリセットする
-      enterCount = 0;
     }
   }
-  }
-);
-
+)
 
 const answers = [
   '###userName###のいいところは声です。###userName###の特徴的な声は皆を惹きつけ、心に残ります。',
